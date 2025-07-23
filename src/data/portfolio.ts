@@ -149,14 +149,16 @@ export const additionalProjects = [
     title: "AI Resume Builder",
     description: "Resume optimization tool with privacy-first design",
     features: ["Data privacy protection", "Secure PDF generation", "No data retention"],
-    category: "ai-tools"
+    category: "ai-tools",
+    image: "/project-images/ai-resume-tailor.png"
   },
   {
     title: "Math Adventure Land",
     liveUrl: "https://math-adventure-land-jcestradahwc.replit.app",
     description: "Educational platform with child safety features",
     features: ["COPPA compliance considerations", "Secure user accounts", "Privacy protection"],
-    category: "education"
+    category: "education",
+    image: "/project-images/math-adventure-land.png"
   },
   {
     title: "Mental Health App",

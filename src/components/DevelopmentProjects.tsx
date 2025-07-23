@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Sparkles, Zap, Users, DollarSign, Package, Rocket, Eye } from 'lucide-react';
+import { ExternalLink, Github, Sparkles, Zap, Users, DollarSign, Package, Rocket, Eye, Heart } from 'lucide-react';
 import ProjectImageModal from './ProjectImageModal';
 
 const DevelopmentProjects: React.FC = () => {
@@ -108,7 +108,8 @@ const DevelopmentProjects: React.FC = () => {
         retention: "90% User Retention"
       },
       icon: Rocket,
-      color: "pink"
+      color: "pink",
+      image: "/project-images/math-adventure-land.png"
     },
     {
       id: 7,
@@ -123,8 +124,9 @@ const DevelopmentProjects: React.FC = () => {
         responsiveness: "100% Mobile Friendly",
         features: "Real-time Updates"
       },
-      icon: Sparkles,
-      color: "purple"
+      icon: Heart,
+      color: "rose",
+      image: "/project-images/wedding-invitation.png"
     }
   ];
 
@@ -135,7 +137,8 @@ const DevelopmentProjects: React.FC = () => {
       purple: 'bg-purple-100 text-purple-600 border-purple-200',
       orange: 'bg-orange-100 text-orange-600 border-orange-200',
       blue: 'bg-blue-100 text-blue-600 border-blue-200',
-      pink: 'bg-pink-100 text-pink-600 border-pink-200'
+      pink: 'bg-pink-100 text-pink-600 border-pink-200',
+      rose: 'bg-rose-100 text-rose-600 border-rose-200'
     };
     return colors[color as keyof typeof colors] || colors.indigo;
   };
