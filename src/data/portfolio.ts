@@ -50,7 +50,8 @@ export const featuredProjects = [
     },
     featured: true,
     category: "cybersecurity",
-    highlight: "LEARNING PROJECT"
+    highlight: "LEARNING PROJECT",
+    image: "/project-images/threat-intelligence-dashboard.png"
   },
   {
     id: 2,
@@ -98,7 +99,8 @@ export const featuredProjects = [
     },
     featured: true,
     category: "enterprise",
-    highlight: "PRODUCTION SYSTEM"
+    highlight: "PRODUCTION SYSTEM",
+    image: "/project-images/talent-pipeline-portal.png"
   },
   {
     id: 4,
@@ -122,7 +124,8 @@ export const featuredProjects = [
     },
     featured: true,
     category: "full-stack",
-    highlight: "SECURE COMMERCE"
+    highlight: "SECURE COMMERCE",
+    image: "/project-images/lule-candles-home.png"
   }
 ];
 
@@ -139,7 +142,8 @@ export const additionalProjects = [
     liveUrl: "https://www.adrianncutz.com",
     description: "Professional business website with security considerations",
     category: "web-development",
-    securityNote: "Implemented secure contact forms and data protection"
+    securityNote: "Implemented secure contact forms and data protection",
+    image: "/project-images/adrian-cutz-booking.png"
   },
   {
     title: "AI Resume Builder",

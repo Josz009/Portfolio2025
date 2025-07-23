@@ -11,6 +11,7 @@ export interface Project {
   featured: boolean;
   category: string;
   highlight?: string;
+  image?: string;
 }
 
 export interface GitHubRepo {

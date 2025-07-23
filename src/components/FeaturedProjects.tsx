@@ -1,9 +1,10 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Shield, Lock, AlertTriangle, CheckCircle } from 'lucide-react';
+import { ExternalLink, Github, Shield, Lock, AlertTriangle, CheckCircle, Eye } from 'lucide-react';
 import { featuredProjects, additionalProjects } from '../data/portfolio';
 import { GitHubRepo, Project } from '../types';
 import { mapRepoToProject } from '../utils/github';
+import ProjectImageModal from './ProjectImageModal';
 
 interface FeaturedProjectsProps {
   repos: GitHubRepo[];
@@ -11,6 +12,13 @@ interface FeaturedProjectsProps {
 }
 
 const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ repos }) => {
+  const [selectedImage, setSelectedImage] = useState<{
+    src: string;
+    title: string;
+    liveUrl?: string;
+    githubUrl?: string;
+  } | null>(null);
+
   // Merge featured projects with GitHub data
   const enhancedProjects = useMemo(() => {
     return featuredProjects.map(project => {
@@ -62,7 +70,10 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ repos }) => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <FlagshipProjectCard project={enhancedProjects[0] as unknown as Project} />
+            <FlagshipProjectCard 
+              project={enhancedProjects[0] as unknown as Project} 
+              onImageClick={(image) => setSelectedImage(image)}
+            />
           </motion.div>
 
           {/* Other Featured Projects - Diagonal Grid */}
@@ -76,7 +87,10 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ repos }) => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className={index % 2 === 0 ? 'lg:mt-0' : 'lg:mt-8'}
               >
-                <ProjectCard project={project as unknown as Project} />
+                <ProjectCard 
+                  project={project as unknown as Project} 
+                  onImageClick={(image) => setSelectedImage(image)}
+                />
               </motion.div>
             ))}
           </div>
@@ -102,21 +116,66 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ repos }) => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
               >
-                <AdditionalProjectCard project={project} />
+                <AdditionalProjectCard 
+                  project={project} 
+                  onImageClick={(image) => setSelectedImage(image)}
+                />
               </motion.div>
             ))}
           </div>
         </motion.div>
       </div>
+
+      {/* Image Modal */}
+      {selectedImage && (
+        <ProjectImageModal
+          isOpen={!!selectedImage}
+          onClose={() => setSelectedImage(null)}
+          imageSrc={selectedImage.src}
+          projectTitle={selectedImage.title}
+          projectUrl={selectedImage.liveUrl}
+          githubUrl={selectedImage.githubUrl}
+        />
+      )}
     </section>
   );
 };
 
-const FlagshipProjectCard: React.FC<{ project: Project }> = ({ project }) => {
+const FlagshipProjectCard: React.FC<{ 
+  project: Project;
+  onImageClick: (image: { src: string; title: string; liveUrl?: string; githubUrl?: string }) => void;
+}> = ({ project, onImageClick }) => {
   return (
     <div className="relative group">
       <div className="absolute inset-0 bg-gradient-to-r from-cyber-blue to-blue-600 rounded-2xl opacity-10 group-hover:opacity-20 transition-opacity duration-300" />
       <div className="relative bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
+        {/* Featured Image */}
+        {project.image && (
+          <div className="relative h-64 lg:h-80 overflow-hidden bg-slate-100">
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-full object-cover object-top"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+            <button
+              onClick={() => onImageClick({
+                src: project.image!,
+                title: project.title,
+                liveUrl: project.liveUrl || undefined,
+                githubUrl: project.githubUrl || undefined
+              })}
+              className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black/50"
+            >
+              <div className="flex items-center gap-2 text-white">
+                <Eye className="w-6 h-6" />
+                <span className="font-medium">View Screenshot</span>
+              </div>
+            </button>
+          </div>
+        )}
+        
         <div className="grid lg:grid-cols-3 gap-8 p-8">
           {/* Project Info */}
           <div className="lg:col-span-2">
@@ -218,11 +277,41 @@ const FlagshipProjectCard: React.FC<{ project: Project }> = ({ project }) => {
   );
 };
 
-const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
+const ProjectCard: React.FC<{ 
+  project: Project;
+  onImageClick: (image: { src: string; title: string; liveUrl?: string; githubUrl?: string }) => void;
+}> = ({ project, onImageClick }) => {
   return (
     <div className="group relative h-full">
       <div className="absolute inset-0 bg-gradient-to-r from-cyber-blue to-blue-600 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
-      <div className="relative h-full bg-white rounded-xl shadow-md border border-slate-200 p-6 hover:shadow-xl transition-all duration-300">
+      <div className="relative h-full bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300">
+        {/* Project Image */}
+        {project.image && (
+          <div className="relative h-48 overflow-hidden bg-slate-100">
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-full object-cover object-top"
+              loading="lazy"
+            />
+            <button
+              onClick={() => onImageClick({
+                src: project.image!,
+                title: project.title,
+                liveUrl: project.liveUrl || undefined,
+                githubUrl: project.githubUrl || undefined
+              })}
+              className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black/50"
+            >
+              <div className="flex items-center gap-2 text-white">
+                <Eye className="w-5 h-5" />
+                <span className="text-sm font-medium">View</span>
+              </div>
+            </button>
+          </div>
+        )}
+        
+        <div className="p-6">
         <div className="flex items-start justify-between mb-4">
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-2">
@@ -304,14 +393,41 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
             </a>
           )}
         </div>
+        </div>
       </div>
     </div>
   );
 };
 
-const AdditionalProjectCard: React.FC<{ project: any }> = ({ project }) => {
+const AdditionalProjectCard: React.FC<{ 
+  project: any;
+  onImageClick: (image: { src: string; title: string; liveUrl?: string; githubUrl?: string }) => void;
+}> = ({ project, onImageClick }) => {
   return (
-    <div className="bg-white rounded-lg border border-slate-200 p-5 hover:shadow-md transition-all duration-300">
+    <div className="bg-white rounded-lg border border-slate-200 overflow-hidden hover:shadow-md transition-all duration-300">
+      {/* Thumbnail Image */}
+      {project.image && (
+        <div className="relative h-32 overflow-hidden bg-slate-100">
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-full object-cover object-top"
+            loading="lazy"
+          />
+          <button
+            onClick={() => onImageClick({
+              src: project.image!,
+              title: project.title,
+              liveUrl: project.liveUrl || undefined
+            })}
+            className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black/50"
+          >
+            <Eye className="w-4 h-4 text-white" />
+          </button>
+        </div>
+      )}
+      
+      <div className="p-5">
       <h4 className="font-semibold text-slate-800 mb-2">{project.title}</h4>
       <p className="text-sm text-slate-600 mb-3">{project.description}</p>
       
@@ -344,6 +460,7 @@ const AdditionalProjectCard: React.FC<{ project: any }> = ({ project }) => {
           View Project
         </a>
       )}
+      </div>
     </div>
   );
 };

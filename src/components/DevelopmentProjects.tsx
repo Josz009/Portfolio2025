@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Sparkles, Zap, Users, DollarSign, Package, Rocket } from 'lucide-react';
+import { ExternalLink, Github, Sparkles, Zap, Users, DollarSign, Package, Rocket, Eye } from 'lucide-react';
+import ProjectImageModal from './ProjectImageModal';
 
 const DevelopmentProjects: React.FC = () => {
+  const [selectedImage, setSelectedImage] = useState<{
+    src: string;
+    title: string;
+    liveUrl?: string;
+    githubUrl?: string;
+  } | null>(null);
+
   const developmentProjects = [
     {
       id: 1,
@@ -19,7 +27,8 @@ const DevelopmentProjects: React.FC = () => {
         uptime: "99.9% Availability"
       },
       icon: Users,
-      color: "indigo"
+      color: "indigo",
+      image: "/project-images/talent-pipeline-portal.png"
     },
     {
       id: 2,
@@ -35,7 +44,8 @@ const DevelopmentProjects: React.FC = () => {
         features: "50+ SKUs Managed"
       },
       icon: DollarSign,
-      color: "green"
+      color: "green",
+      image: "/project-images/lule-candles-home.png"
     },
     {
       id: 3,
@@ -51,7 +61,8 @@ const DevelopmentProjects: React.FC = () => {
         mobile: "100% Mobile Optimized"
       },
       icon: Sparkles,
-      color: "purple"
+      color: "purple",
+      image: "/project-images/adrian-cutz-booking.png"
     },
     {
       id: 4,
@@ -162,6 +173,32 @@ const DevelopmentProjects: React.FC = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <div className="h-full bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300 group">
+                  {/* Project Image */}
+                  {project.image && (
+                    <div className="relative h-48 overflow-hidden bg-slate-100">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                      <button
+                        onClick={() => setSelectedImage({
+                          src: project.image!,
+                          title: project.title,
+                          liveUrl: project.liveUrl || undefined,
+                          githubUrl: project.githubUrl || undefined
+                        })}
+                        className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/50"
+                      >
+                        <div className="flex items-center gap-2 text-white">
+                          <Eye className="w-5 h-5" />
+                          <span className="text-sm font-medium">View Full Image</span>
+                        </div>
+                      </button>
+                    </div>
+                  )}
+                  
                   {/* Project Header */}
                   <div className="p-6 border-b border-slate-100">
                     <div className="flex items-start justify-between mb-4">
@@ -260,6 +297,18 @@ const DevelopmentProjects: React.FC = () => {
           </a>
         </motion.div>
       </div>
+
+      {/* Image Modal */}
+      {selectedImage && (
+        <ProjectImageModal
+          isOpen={!!selectedImage}
+          onClose={() => setSelectedImage(null)}
+          imageSrc={selectedImage.src}
+          projectTitle={selectedImage.title}
+          projectUrl={selectedImage.liveUrl}
+          githubUrl={selectedImage.githubUrl}
+        />
+      )}
     </section>
   );
 };
