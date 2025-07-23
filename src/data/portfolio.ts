@@ -8,7 +8,7 @@ export const personalInfo = {
   github: "https://github.com/Josz009",
   
   // Professional positioning for cybersecurity transition
-  headline: "Senior Full-Stack Developer Transitioning to Cybersecurity",
+  headline: "Full-Stack Developer Transitioning to Cybersecurity",
   tagline: "8+ Years Development Experience | Cybersecurity Education & Certification",
   
   professionalSummary: {
