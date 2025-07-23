@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Shield, Code, TrendingUp, Terminal, Lock } from 'lucide-react';
 import SecurityMetrics from './SecurityMetrics';
+import ResumeButton from './ResumeButton';
 import { personalInfo, securityMetrics } from '../data/portfolio';
 
 const HeroSection: React.FC = () => {
@@ -114,6 +115,7 @@ const HeroSection: React.FC = () => {
                   <Terminal className="w-5 h-5" />
                   Start Conversation
                 </a>
+                <ResumeButton />
               </motion.div>
             </motion.div>
 

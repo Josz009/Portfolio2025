@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, Linkedin, Github, Download, Terminal } from 'lucide-react';
+import { Mail, Phone, Linkedin, Github, Terminal } from 'lucide-react';
+import ResumeButton from './ResumeButton';
 import { personalInfo } from '../data/portfolio';
 
 const ContactSection: React.FC = () => {
@@ -55,8 +56,20 @@ const ContactSection: React.FC = () => {
       return ['Opening GitHub profile...', ''];
     },
     resume: () => {
-      // In a real implementation, this would download the resume
-      return ['Resume download started...', 'Note: Resume download functionality to be implemented', ''];
+      // Open in new tab
+      window.open('/Jose_Carlos_Estrada_Resume.pdf', '_blank');
+      
+      // Trigger download after a short delay
+      setTimeout(() => {
+        const link = document.createElement('a');
+        link.href = '/Jose_Carlos_Estrada_Resume.pdf';
+        link.download = 'Jose_Carlos_Estrada_Resume.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }, 500);
+      
+      return ['Opening resume in new tab...', 'Resume download started...', ''];
     },
     skills: () => [
       'Technical Skills:',
@@ -281,14 +294,16 @@ const ContactSection: React.FC = () => {
               </div>
 
               {/* CTA Button */}
-              <motion.button
-                className="w-full mt-8 px-6 py-3 bg-cyber-blue text-white font-medium rounded-lg hover:bg-blue-600 transition-colors duration-300 flex items-center justify-center gap-2"
+              <motion.div
+                className="mt-8"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <Download className="w-5 h-5" />
-                Download Resume
-              </motion.button>
+                <ResumeButton 
+                  variant="primary" 
+                  className="w-full justify-center" 
+                />
+              </motion.div>
             </div>
           </motion.div>
         </div>

@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import HeroSection from './components/HeroSection';
 import FeaturedProjects from './components/FeaturedProjects';
+import DeveloperHeroSection from './components/DeveloperHeroSection';
+import DevelopmentProjects from './components/DevelopmentProjects';
 import TechnicalSkills from './components/TechnicalSkills';
 import CareerTimeline from './components/CareerTimeline';
 import ContactSection from './components/ContactSection';
@@ -33,6 +35,8 @@ function App() {
       <main>
         <HeroSection />
         <FeaturedProjects repos={repos} loading={loading} />
+        <DeveloperHeroSection />
+        <DevelopmentProjects />
         <TechnicalSkills />
         <CareerTimeline />
         <ContactSection />

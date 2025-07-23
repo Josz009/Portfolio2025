@@ -103,9 +103,9 @@ export const featuredProjects = [
   {
     id: 4,
     title: "E-commerce Security Implementation",
-    subtitle: "Secure Payment Processing Platform",
+    subtitle: "Lule Candle - Secure Payment Processing Platform",
     description: "Production e-commerce platform implementing security best practices, PCI DSS considerations, and secure payment processing.",
-    liveUrl: null,
+    liveUrl: "https://lulecandle.com",
     githubUrl: null,
     techStack: ["React", "Stripe", "PayPal", "Security Compliance"],
     securityFeatures: [
@@ -128,6 +128,13 @@ export const featuredProjects = [
 
 export const additionalProjects = [
   {
+    title: "Wedding Invitation Platform",
+    liveUrl: "https://wedding-invitationga.onrender.com",
+    description: "Interactive wedding invitation with RSVP functionality and guest management",
+    category: "web-development",
+    securityNote: "Secure guest data handling and privacy protection"
+  },
+  {
     title: "Adrian NC Website",
     liveUrl: "https://www.adrianncutz.com",
     description: "Professional business website with security considerations",
@@ -142,6 +149,7 @@ export const additionalProjects = [
   },
   {
     title: "Math Adventure Land",
+    liveUrl: "https://math-adventure-land-jcestradahwc.replit.app",
     description: "Educational platform with child safety features",
     features: ["COPPA compliance considerations", "Secure user accounts", "Privacy protection"],
     category: "education"
