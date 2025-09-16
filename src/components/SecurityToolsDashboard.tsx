@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Shield, Server, Bug, Lock, Eye, Terminal, Database, Cloud, AlertTriangle } from 'lucide-react';
+import { Shield, Server, Bug, Lock, Eye, Terminal, Cloud, AlertTriangle } from 'lucide-react';
 
 const SecurityToolsDashboard: React.FC = () => {
   const toolCategories = [

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Shield, Lock, AlertTriangle, Bug, Search, Eye, Server, Users, Terminal } from 'lucide-react';
+import { Shield, Lock, Bug, Eye, Terminal } from 'lucide-react';
 
 const CybersecurityHeroSection: React.FC = () => {
   const securityMetrics = [

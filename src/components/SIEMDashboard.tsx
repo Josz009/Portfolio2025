@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Shield, AlertTriangle, Activity, Server, Wifi, Lock, AlertCircle, CheckCircle, XCircle } from 'lucide-react';
+import { Shield, Activity, Server, Wifi, Lock, AlertCircle, CheckCircle, XCircle } from 'lucide-react';
 
 interface SecurityEvent {
   id: number;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Shield, Activity, AlertCircle, CheckCircle, XCircle, Terminal, Code, Server, Lock } from 'lucide-react';
+import { Activity, Terminal, Code, Server, Lock } from 'lucide-react';
 
 interface SecurityEvent {
   id: number;
@@ -53,23 +53,6 @@ const SIEMToolsDashboard: React.FC = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const getSeverityColor = (severity: SecurityEvent['severity']) => {
-    switch (severity) {
-      case 'HIGH': return 'text-red-500 bg-red-50 border-red-200';
-      case 'MEDIUM': return 'text-orange-500 bg-orange-50 border-orange-200';
-      case 'LOW': return 'text-yellow-500 bg-yellow-50 border-yellow-200';
-      case 'INFO': return 'text-blue-500 bg-blue-50 border-blue-200';
-    }
-  };
-
-  const getStatusIcon = (status: SecurityEvent['status']) => {
-    switch (status) {
-      case 'BLOCKED': return <XCircle className="w-4 h-4 text-red-500" />;
-      case 'MONITORED': return <AlertCircle className="w-4 h-4 text-orange-500" />;
-      case 'ALLOWED': return <CheckCircle className="w-4 h-4 text-green-500" />;
-      case 'LOGGED': return <Activity className="w-4 h-4 text-blue-500" />;
-    }
-  };
 
   // Your actual tools and proficiency
   const toolsAndSkills = [

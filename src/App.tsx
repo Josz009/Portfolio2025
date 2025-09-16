@@ -6,7 +6,6 @@ import DevelopmentProjects from './components/DevelopmentProjects';
 import CybersecurityHeroSection from './components/CybersecurityHeroSection';
 import SecurityProjects from './components/SecurityProjects';
 import SIEMToolsDashboard from './components/SIEMToolsDashboard';
-import TechnicalSkills from './components/TechnicalSkills';
 import Certifications from './components/Certifications';
 import CareerTimeline from './components/CareerTimeline';
 import ContactSection from './components/ContactSection';
