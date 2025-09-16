@@ -5,7 +5,7 @@ import DeveloperHeroSection from './components/DeveloperHeroSection';
 import DevelopmentProjects from './components/DevelopmentProjects';
 import CybersecurityHeroSection from './components/CybersecurityHeroSection';
 import SecurityProjects from './components/SecurityProjects';
-import SIEMToolsDashboard from './components/SIEMToolsDashboard';
+import SecurityToolsGrid from './components/SecurityToolsGrid';
 import TechnicalSkills from './components/TechnicalSkills';
 import Certifications from './components/Certifications';
 import CareerTimeline from './components/CareerTimeline';
@@ -43,7 +43,8 @@ function App() {
         <DevelopmentProjects />
         <CybersecurityHeroSection />
         <SecurityProjects />
-        <SIEMToolsDashboard />
+        <SecurityToolsGrid />
+        <TechnicalSkills />
         <Certifications />
         <CareerTimeline />
         <ContactSection />

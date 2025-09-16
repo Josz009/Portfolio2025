@@ -8,7 +8,7 @@ export const personalInfo = {
   github: "https://github.com/Josz009",
   
   // Professional positioning for cybersecurity transition
-  headline: "Full-Stack Developer Transitioning to Cybersecurity",
+  headline: "Senior Full-Stack Developer Transitioning to Cybersecurity",
   tagline: "8+ Years Development Experience | Cybersecurity Education & Certification",
   
   professionalSummary: {
@@ -227,7 +227,7 @@ export const careerTimeline = [
     impact: "Hands-on enterprise security experience"
   },
   {
-    period: "Jan 2024 - Present",
+    period: "2024 - Present",
     role: "Software Engineer | Web Developer | RPA Specialist",
     company: "Synergy Digital Works",
     highlights: [
@@ -237,6 +237,18 @@ export const careerTimeline = [
       "Firebase Analytics integration for system monitoring"
     ],
     impact: "60% efficiency improvement in HR onboarding"
+  },
+  {
+    period: "2016 - 2025",
+    role: "IT Systems Lead | Internal Software Developer",
+    company: "Houston Window Cleaning Services",
+    highlights: [
+      "Led technology transformation for 30+ employee organization",
+      "Built comprehensive dashboards for HR, Finance, and Compliance",
+      "Designed internal event logging system for security anomalies",
+      "Reduced manual administrative workload by 75%"
+    ],
+    impact: "$2M annual revenue systems, promoted twice"
   },
   {
     period: "2020 - 2024",
@@ -249,18 +261,6 @@ export const careerTimeline = [
       "Multiple security certifications completed"
     ],
     impact: "Formal security education and certifications"
-  },
-  {
-    period: "Jan 2016 - Apr 2025",
-    role: "IT Systems Lead | Internal Software Developer",
-    company: "Houston Window Cleaning Services",
-    highlights: [
-      "Led technology transformation for 30+ employee organization",
-      "Built comprehensive dashboards for HR, Finance, and Compliance",
-      "Designed internal event logging system for security anomalies",
-      "Reduced manual administrative workload by 75%"
-    ],
-    impact: "$2M annual revenue systems, promoted twice"
   }
 ];
 

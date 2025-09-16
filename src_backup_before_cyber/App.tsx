@@ -3,9 +3,6 @@ import HeroSection from './components/HeroSection';
 import FeaturedProjects from './components/FeaturedProjects';
 import DeveloperHeroSection from './components/DeveloperHeroSection';
 import DevelopmentProjects from './components/DevelopmentProjects';
-import CybersecurityHeroSection from './components/CybersecurityHeroSection';
-import SecurityProjects from './components/SecurityProjects';
-import SIEMToolsDashboard from './components/SIEMToolsDashboard';
 import TechnicalSkills from './components/TechnicalSkills';
 import Certifications from './components/Certifications';
 import CareerTimeline from './components/CareerTimeline';
@@ -41,9 +38,7 @@ function App() {
         <FeaturedProjects repos={repos} loading={loading} />
         <DeveloperHeroSection />
         <DevelopmentProjects />
-        <CybersecurityHeroSection />
-        <SecurityProjects />
-        <SIEMToolsDashboard />
+        <TechnicalSkills />
         <Certifications />
         <CareerTimeline />
         <ContactSection />

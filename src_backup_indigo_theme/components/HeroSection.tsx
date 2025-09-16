@@ -27,32 +27,18 @@ const HeroSection: React.FC = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              {/* Security badges */}
-              <div className="flex flex-wrap gap-3 mb-6">
-                <motion.div 
-                  className="inline-flex items-center gap-2 security-badge px-4 py-2 rounded-full"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
-                >
-                  <Shield className="w-4 h-4 text-cyber-blue" />
-                  <span className="text-sm font-medium text-slate-700">
-                    Security-Focused Developer in Transition
-                  </span>
-                </motion.div>
-                
-                <motion.div 
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-100 border border-green-300"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
-                >
-                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                  <span className="text-sm font-medium text-green-700">
-                    Open to Security Opportunities
-                  </span>
-                </motion.div>
-              </div>
+              {/* Security badge */}
+              <motion.div 
+                className="inline-flex items-center gap-2 security-badge px-4 py-2 rounded-full mb-6"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+              >
+                <Shield className="w-4 h-4 text-cyber-blue" />
+                <span className="text-sm font-medium text-slate-700">
+                  Security-Focused Developer in Transition
+                </span>
+              </motion.div>
 
               <h1 className="text-5xl lg:text-6xl font-mono font-bold text-security-blue mb-4">
                 Jose Carlos Estrada

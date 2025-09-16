@@ -161,11 +161,10 @@ const ContactSection: React.FC = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl font-mono font-bold text-white mb-4">
-            Ready to Secure Your Infrastructure?
+            Let's Connect
           </h2>
           <p className="text-lg text-slate-300 max-w-3xl mx-auto">
-            Let's discuss how my unique blend of development expertise and security knowledge can protect your organization. 
-            Available for cybersecurity analyst and security engineering roles.
+            Ready to discuss cybersecurity opportunities? Use the terminal below or reach out directly.
           </p>
         </motion.div>
 
